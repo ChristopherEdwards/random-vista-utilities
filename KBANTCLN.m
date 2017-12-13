@@ -300,6 +300,7 @@ DEVHFS ; Fix up HFS device
  I $D(DIERR) ZWRITE ERR
  ;
 DEVTTY ; Fix TTY
+ W "FIXING CONSOLE!",!
  N OS S OS=$$VERSION^%ZOSV(1)
  N dI S dI=$S(OS["Linux":"/dev/tty",OS["NT":"|TRM|",1:"/dev/tty")
  N ttyIEN s ttyIEN=$$FIND1^DIC(3.5,,"MQ",dI)
@@ -330,6 +331,7 @@ DEVTTY ; Fix TTY
  I $D(DIERR) ZWRITE ERR B
  ;
 DEVPTS ; Fix PTS
+ W "Fixing PTY!",!
  N OS S OS=$$VERSION^%ZOSV(1)
  N dI S dI=$S(OS["Linux":"/dev/pts",OS["NT":"|TNT|",OS["CYGWIN":"/dev/cons",OS["Darwin":"/dev/ttys",1:"/dev/pts")
  N ptyIEN s ptyIEN=$$FIND1^DIC(3.5,,"MQ",dI)
