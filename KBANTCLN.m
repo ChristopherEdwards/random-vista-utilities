@@ -336,6 +336,7 @@ DEVPTS ; Fix PTS
  N dI S dI=$S(OS["Linux":"/dev/pts",OS["NT":"|TNT|",OS["CYGWIN":"/dev/cons",OS["Darwin":"/dev/ttys",1:"/dev/pts")
  N ptyIEN s ptyIEN=$$FIND1^DIC(3.5,,"MQ",dI)
  I 'ptyIEN d
+ . W "ptyIEN not found! Quitting",! Q
  . N FDA,ERR,DIERR
  . S FDA(3.5,ptyIEN_",",.01)="VIRTUAL TERMINAL"
  . D FILE^DIE("E",$NA(FDA))
